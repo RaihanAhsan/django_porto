@@ -9,9 +9,17 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
+# Load environment variables
+load_dotenv()
+
+# Xendit Configuration
+XENDIT_SECRET_KEY = os.getenv('XENDIT_SECRET_KEY')
+XENDIT_PUBLIC_KEY = os.getenv('XENDIT_PUBLIC_KEY')
+XENDIT_IS_PRODUCTION = False  # False = Test Mode, True = Live Mode
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

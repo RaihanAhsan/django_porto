@@ -2,27 +2,38 @@
 from django.shortcuts import render
 
 def home(request):
-    # Data yang akan dikirim ke halaman HTML
     context = {
-        'nama': 'Andi Prasetyo',  # Ganti dengan nama Anda
-        'title': 'Portofolio Saya',
+        'nama': 'Andi Prasetyo',
         'bio': 'Saya adalah seorang pengembang web Python yang antusias membangun solusi digital.',
-        'projects': [
-            {
-                'nama': 'Aplikasi Cuaca',
-                'deskripsi': 'Aplikasi real-time berbasis API untuk menampilkan cuaca terkini.',
-                'gambar': 'weather.jpg'  # nanti kita pakai placeholder
-            },
-            {
-                'nama': 'Sistem Blog Django',
-                'deskripsi': 'Blog sederhana dengan fitur CRUD dan autentikasi pengguna.',
-                'gambar': 'blog.jpg'
-            },
-            {
-                'nama': 'Dashboard Analitik',
-                'deskripsi': 'Dashboard interaktif untuk menampilkan data penjualan.',
-                'gambar': 'dashboard.jpg'
-            },
-        ]
     }
     return render(request, 'portofolio/home.html', context)
+
+def about(request):
+    return render(request, 'portofolio/about.html')
+
+def blog(request):
+    # Data dummy untuk artikel blog
+    posts = [
+        {
+            'judul': 'Mengenal Django Framework',
+            'tanggal': '15 Juli 2026',
+            'kategori': 'Python',
+            'isi': 'Django adalah framework web Python yang sangat powerful. Dalam artikel ini kita akan membahas dasar-dasar Django dan bagaimana memulainya dengan cepat.'
+        },
+        {
+            'judul': 'Tips Belajar Pemrograman untuk Pemula',
+            'tanggal': '10 Juli 2026',
+            'kategori': 'Karir',
+            'isi': 'Belajar pemrograman bisa terasa sulit di awal. Berikut beberapa tips yang bisa membantu Anda melewati masa-masa sulit tersebut.'
+        },
+        {
+            'judul': 'Mengapa Memilih Bootstrap untuk Frontend?',
+            'tanggal': '5 Juli 2026',
+            'kategori': 'Frontend',
+            'isi': 'Bootstrap adalah framework CSS yang paling populer. Mari kita bahas kelebihan dan kekurangannya untuk proyek web modern.'
+        },
+    ]
+    context = {
+        'posts': posts
+    }
+    return render(request, 'portofolio/blog.html', context)
